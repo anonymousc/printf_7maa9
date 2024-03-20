@@ -6,22 +6,21 @@
 /*   By: aessadik <aessadik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 03:11:28 by aessadik          #+#    #+#             */
-/*   Updated: 2023/12/20 03:23:14 by aessadik         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:02:41 by aessadik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int ft_strlen(char *s)
+void ft_putstr(char *s, int *c)
 {
     int i;
 
     i = 0;
-    while(s[i])
-        i++;
-    return(i);
-}
-int ft_putstr(char *s)
-{
-    return(write(1,s,ft_strlen(s))); 
+    if(!s)
+        ft_putstr("(null)", c);
+    while (s && s[i])
+    {
+        ft_putchar(s[i],c);
+    }
 }

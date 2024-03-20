@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
@@ -25,18 +25,22 @@ int ft_vprintf(const char *frm, va_list args)
         {
             i++;
             if (frm[i] == 'c')
-                count += ft_putchar(va_arg(args, int));
+                ft_putchar(va_arg(args, int), &count);
             else if (frm[i] == 's')
-                count += ft_putstr(va_arg(args, char *));
-            else if (frm[i] == 'd')
-                count += ft_putnbr(va_arg(args, int), &count);
+                ft_putstr(va_arg(args, char *), &count);
+            else if (frm[i] == 'd' || frm[i] == 'i')
+                ft_putnbr(va_arg(args, int), &count);
             else if (frm[i] == 'x')
-                count += ft_puthexmin(va_arg(args, unsigned int), &count);
+                ft_puthex(va_arg(args, unsigned int), &count);
             else if (frm[i] == 'p')
-                count += ft_putstr("0x") + ft_putaddr(va_arg(args, unsigned long) , &count);
+                ft_putaddr(va_arg(args, unsigned long) , &count);
+            else if(frm[i] == 'X')
+                ft_putHEX(va_arg(args, unsigned long), &count);
+            else if (frm[i] == 'u')
+                ft_putunsinged(va_arg(args, unsigned) , &count);
         }
         else
-            count += ft_putchar(frm[i]);
+            ft_putchar(frm[i] , &count);
         i++;
     }
     return (count);

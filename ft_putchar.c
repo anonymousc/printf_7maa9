@@ -6,13 +6,15 @@
 /*   By: aessadik <aessadik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 03:06:48 by aessadik          #+#    #+#             */
-/*   Updated: 2024/03/11 08:30:47 by aessadik         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:05:42 by aessadik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putchar(char c)
+void ft_putchar(char s,int *c)
 {
-    return(write(1,&c,1));
+    write(1,&s,1);
+    *c = *c + 1;
+    
 }

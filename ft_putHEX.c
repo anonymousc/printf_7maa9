@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putHEX.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aessadik <aessadik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 03:24:02 by aessadik          #+#    #+#             */
-/*   Updated: 2024/03/20 14:53:24 by aessadik         ###   ########.fr       */
+/*   Created: 2024/03/20 12:56:16 by aessadik          #+#    #+#             */
+/*   Updated: 2024/03/20 15:06:27 by aessadik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnbr(int n, int *c)
+void ft_putHEX(unsigned long n,int  *c)
 {
-	unsigned int	nb;
-	
-
-	if (n < 0)
-	{
-		ft_putchar('-' , c);
-		nb = -n;
-	}
-	else
-		nb = n;
-	if (nb > 9)
-		ft_putnbr(nb / 10, c);
-	ft_putchar(nb % 10 + '0' , c);
+    if (n < 16)
+        ft_putHEX(n / 16, c);
+    ft_putchar("0123456789ABCDEF"[n % 16], c);
 }
